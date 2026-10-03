@@ -1,0 +1,186 @@
+.cake-container {
+  width: 100vw;
+  height: 100vh;
+  transition: background-color 2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.lights-dim {
+  background: radial-gradient(circle at center, #1c0b15 0%, #0a0508 100%);
+}
+
+.lights-dim::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,165,0,0.15) 0%, rgba(255,105,180,0.05) 40%, rgba(0,0,0,0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lights-on {
+  background: radial-gradient(circle at center, #2e1a25 0%, #1a1015 100%);
+}
+
+.cake-content {
+  flex-direction: column;
+  height: 100%;
+  z-index: 10;
+  position: relative;
+}
+
+.cake-message {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 4rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.blow-btn, .continue-btn {
+  margin-top: 4rem;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #c44569 100%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(196, 69, 105, 0.4);
+  transition: opacity 0.5s ease;
+}
+
+.blow-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.continue-btn {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #b8860b 100%);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+  color: #000;
+}
+
+/* Cake CSS */
+.cake {
+  position: relative;
+  width: 250px;
+  height: 200px;
+  margin-top: 50px;
+}
+
+.plate {
+  width: 270px;
+  height: 90px;
+  position: absolute;
+  bottom: -45px;
+  left: -10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.layer {
+  position: absolute;
+  display: block;
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f3a8b0;
+  box-shadow: 0 2px 0px #e6919a, 0 4px 0px #d97b84, 0 6px 0px #cc646e, 0 8px 0px #bf4d58, 0 10px 0px #b33642, 0 12px 0px #a6202c, 0 14px 0px #990916, 0 16px 0px #8c0000, 0 18px 0px #800000, 0 20px 0px #730000, 0 22px 0px #660000, 0 24px 0px #590000, 0 26px 0px #4d0000, 0 28px 0px #400000, 0 30px 0px #330000;
+}
+
+.layer-top { top: 0px; z-index: 4; background-color: #f7c5cc; }
+.layer-middle { top: 33px; z-index: 3; background-color: #f3a8b0; }
+.layer-bottom { top: 66px; z-index: 2; background-color: #e6919a; }
+
+.icing {
+  top: 2px;
+  left: 5px;
+  background-color: #f0e4d0;
+  width: 240px;
+  height: 90px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 5;
+}
+
+.drip {
+  background-color: #f0e4d0;
+  position: absolute;
+  border-radius: 0 0 50px 50px;
+  z-index: 5;
+}
+
+.drip1 { width: 40px; height: 60px; top: 70px; left: 20px; transform: skewY(15deg); }
+.drip2 { width: 50px; height: 75px; top: 80px; left: 100px; transform: skewY(0deg); }
+.drip3 { width: 40px; height: 50px; top: 70px; left: 180px; transform: skewY(-15deg); }
+
+.candles {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+}
+
+.candle {
+  background-color: #fff;
+  width: 12px;
+  height: 45px;
+  border-radius: 6px / 3px;
+  position: absolute;
+  top: 0;
+  box-shadow: inset 2px 0 0 rgba(0,0,0,0.1);
+}
+
+.candle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #e6e6e6;
+}
+
+.candle1 { left: 60px; top: 20px; }
+.candle2 { left: 120px; top: 5px; }
+.candle3 { left: 180px; top: 20px; }
+
+.flame {
+  position: absolute;
+  background-color: orange;
+  width: 15px;
+  height: 25px;
+  border-radius: 50% 50% 20% 20%;
+  top: -30px;
+  left: -1.5px;
+  box-shadow: 0 0 15px orange, 0 0 30px orange, 0 0 50px yellow;
+  animation: flicker 1s infinite alternate;
+  transform-origin: bottom center;
+  transition: all 0.5s ease;
+}
+
+.flame.out {
+  opacity: 0;
+  transform: scale(0);
+  box-shadow: none;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+  100% { transform: scale(1.05) rotate(2deg); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .cake-message { font-size: 2rem; }
+  .cake { transform: scale(0.8); margin-top: 20px; }
+}

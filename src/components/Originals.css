@@ -1,0 +1,239 @@
+.originals-container {
+  width: 100vw;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #0a0514 0%, #03010a 100%);
+  color: #fff;
+  padding-top: 5rem;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.originals-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, rgba(229, 9, 20, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at bottom right, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.originals-header {
+  padding: 0 4rem;
+  margin-bottom: 3rem;
+}
+
+.originals-header h2 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  color: #e50914; /* Netflix red vibe */
+  margin-bottom: 0.5rem;
+}
+
+.originals-subtitle {
+  font-size: 1.2rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 0 4rem 5rem 4rem;
+  justify-content: flex-start;
+}
+
+.video-card {
+  width: calc(33.333% - 1.5rem);
+  background: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.video-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+}
+
+.video-card:hover .play-icon {
+  transform: scale(1.2);
+  color: #e50914;
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: 200px;
+  background: #333;
+  position: relative;
+}
+
+.thumbnail-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.inline-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.play-icon {
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.video-info {
+  padding: 1.5rem;
+}
+
+.video-info h3 {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.video-info p {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* Modal */
+.video-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.95);
+  z-index: 1000;
+}
+
+.video-modal-content {
+  width: 90%;
+  max-width: 1000px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #e50914;
+}
+
+.video-player-wrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+.html-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-error-state {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a0b1c 0%, #05020a 100%);
+  color: #aaa;
+  text-align: center;
+  flex-direction: column;
+}
+
+.error-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-icon {
+  color: #e50914;
+  opacity: 0.5;
+}
+
+.video-error-state h3 {
+  font-family: var(--font-sans);
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+/* Transition Out Section */
+.transition-out-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #050505;
+}
+
+.transition-text {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.delay-text {
+  color: var(--color-accent-light);
+}
+
+@media (max-width: 1024px) {
+  .video-card {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .originals-header, .video-grid {
+    padding: 0 2rem;
+  }
+  
+  .video-card {
+    width: 100%;
+  }
+
+  .close-btn {
+    top: -40px;
+    right: 0;
+  }
+  
+  .transition-text {
+    font-size: 1.8rem;
+  }
+}
